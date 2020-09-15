@@ -1,5 +1,5 @@
 class Api::V0::PingsController < ApplicationController
-  edf index
+  def index
   render json: { message: 'Pong' }
   end
 end

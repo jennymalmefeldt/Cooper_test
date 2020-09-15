@@ -6,7 +6,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
       t.string :current_sign_in_ip
-      t.string :last:sign_in_ip
+      t.string :last_sign_in_ip
       t.string :provider, :null => false, :default => "email"
       t.string :uid, :null => false, :default => ""
 
