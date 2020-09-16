@@ -20,7 +20,7 @@ RSpec.describe 'POST /api/v1/auth/sign_in', type: :request do
     end
 
     it 'returns 200 response status' do
-      expected(response).to have_http_status 200
+      expect(response).to have_http_status 200
     end
 
     it 'returns the expected response' do
@@ -30,7 +30,7 @@ RSpec.describe 'POST /api/v1/auth/sign_in', type: :request do
 
   describe 'with invalid password' do
     before do
-      post 'api/v1/auth/sign_in',
+      post '/api/v1/auth/sign_in',
         params: {
           email: user.email,
           password: 'wrong_password'
