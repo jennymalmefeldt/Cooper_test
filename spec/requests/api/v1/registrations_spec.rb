@@ -5,7 +5,7 @@ RSpec.describe 'POST /api/v1/auth', type: :request do
     before do
       post '/api/v1/auth',
         params: {
-          emails: 'example@craftacademy.se',
+          email: 'example@craftacademy.se',
           password: 'password',
           password_confirmation:  'password'
         },
@@ -28,27 +28,7 @@ RSpec.describe 'POST /api/v1/auth', type: :request do
             params: {
               email:  'example@craftacademy.se',
               password: 'password',
-              password_confirmations: 'wrong_password'
-            },
-            headers: headers
-      end
-
-      it 'returns a 422 response status' do
-        expect(response).to have_https_status 422
-      end
-
-      it 'returns an error message' do
-        expect(response_json['errors']['password_confirmations']).to eq ["doesn't match Password"]
-      end
-    end
-
-    describe 'an invalid email address' do
-      before do
-        post '/api/v1/auth',
-            params: {
-              email:  'example@craft',
-              password: 'password',
-              password_confirmations: 'password'
+              password_confirmation: 'wrong_password'
             },
             headers: headers
       end
@@ -58,7 +38,27 @@ RSpec.describe 'POST /api/v1/auth', type: :request do
       end
 
       it 'returns an error message' do
-        expect(response_json['errors']['emails']).to eq ['is not an email']
+        expect(response_json['errors']['password_confirmation']).to eq ["doesn't match Password"]
+      end
+    end
+
+    describe 'an invalid email address' do
+      before do
+        post '/api/v1/auth',
+            params: {
+              email:  'example@craft',
+              password: 'password',
+              password_confirmation: 'password'
+            },
+            headers: headers
+      end
+
+      it 'returns a 422 response status' do
+        expect(response).to have_http_status 422
+      end
+
+      it 'returns an error message' do
+        expect(response_json['errors']['email']).to eq ['is not an email']
       end
     end
 
