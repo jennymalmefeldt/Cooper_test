@@ -30,7 +30,7 @@ RSpec.describe 'POST /api/v1/auth', type: :request do
               password: 'password',
               password_confirmations: 'wrong_password'
             },
-            headers:  headers
+            headers: headers
       end
 
       it 'returns a 422 response status' do
@@ -38,7 +38,7 @@ RSpec.describe 'POST /api/v1/auth', type: :request do
       end
 
       it 'returns an error message' do
-        expect(response_json['errors']['password_confirmations']).to eq ["doesn't mastch Password"]
+        expect(response_json['errors']['password_confirmations']).to eq ["doesn't match Password"]
       end
     end
 

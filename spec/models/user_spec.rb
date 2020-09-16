@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
       emails = ['asdf@ ds.com', '@example.com', 'test me @yahoo.com', 'asdf@example.com', 'ddd@.d. .d', 'ddd@.d']
 
       emails.each do |email|
-        it { is_expected.not_to allow_calue(email).for(:email) }
+        it { is_expected.not_to allow_value(email).for(:email) }
       end
     end
 
