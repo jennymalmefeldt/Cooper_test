@@ -3,7 +3,7 @@ RSpec.describe Api::V1::PerformanceDataController, type: :request do
 
   describe 'POST /api/v1/performance_data' do
     before do
-      post 'api/v1/performance_data',
+      post '/api/v1/performance_data',
         params: {
           performance_data: {
             data: { message: 'Average' }
